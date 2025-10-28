@@ -1,4 +1,21 @@
-﻿////## 1. Генератор монет и игрок
+﻿using TrainingTasks2;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Player player = new Player("Виктор");
+        CoinsGenerator coinsGenerator = new CoinsGenerator();
+        player.coinWallet.Add(coinsGenerator.GenerateCoin());
+        player.coinWallet.Add(coinsGenerator.GenerateCoin());
+        player.coinWallet.Add(coinsGenerator.GenerateCoin());
+        player.coinWallet.Add(coinsGenerator.GenerateCoin());
+        Console.WriteLine(player.CheckCoinsInWallet);
+
+    }
+
+}
+////## 1. Генератор монет и игрок
 //-Есть * *генератор монет * *, **игрок * *и * *монетки * *.
 //- Генератор по запросу создаёт **монетку со случайным номиналом**.
 //- После генерации можно выбрать действие:

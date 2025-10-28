@@ -8,5 +8,12 @@ namespace TrainingTasks2
 {
     internal class CoinsGenerator
     {
+        Random random = new Random();
+        private int coin;
+        public int GenerateCoin()
+        {
+            coin = random.Next(1, 101);
+            return coin;
+        }
     }
 }
