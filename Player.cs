@@ -16,7 +16,14 @@ namespace TrainingTasks2
         }
         public Player(string name)
         {
-            this.name = name;
+            if (name == null)
+            {
+                this.name = "Игрок";
+            }
+            else
+            {
+                this.name = name;
+            }
         }
         public void CurrentBalance()
         {
