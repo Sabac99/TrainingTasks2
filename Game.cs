@@ -8,5 +8,6 @@ namespace TrainingTasks2
 {
     internal class Game
     {
+        
     }
 }

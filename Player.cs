@@ -8,18 +8,19 @@ namespace TrainingTasks2
 {
     internal class Player
     {
-        private string name;
-        public List<int> coinWallet;
+        public string name ;
+        public int coinsInWallet;
+        public Player()
+        {
+            this.name = "Игрок";
+        }
         public Player(string name)
         {
             this.name = name;
         }
-        public void CheckCoinsInWallet()
+        public void CurrentBalance()
         {
-            for (int i = 0; i < coinWallet.Count; i++)
-            {
-                Console.Write(coinWallet[i]);
-            }
+            Console.WriteLine(coinsInWallet);
         }
     }
 }

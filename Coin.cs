@@ -8,6 +8,11 @@ namespace TrainingTasks2
 {
     internal class Coin
     {
-
+        private Random random = new Random();
+        public int nominal;
+        public Coin()
+        {
+            this.nominal = random.Next(1, 100);
+        }
     }
 }
