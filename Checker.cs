@@ -9,7 +9,7 @@ namespace TrainingTasks2
 {
     internal class Checker
     {
-        public List<(int, int)> usedCells;
+        public List<(int, int)> usedCells = new List<(int, int)>();
         public int checkAnswer(string answer)
         {
             bool inputCorrect = false;
@@ -29,10 +29,10 @@ namespace TrainingTasks2
             return size;
         }
 
-        public void CellsEquals(int size, ref List<(int,int)> usedCells, out bool equals, out (int,int) answer)
+        public void CellsEquals(int size, (int,int) compCells, ref List<(int,int)> usedCells, out bool equals, out (int,int) answer)
         {
             CreateCell creator = new CreateCell();
-            var compCells = creator.getCellFromComp(size, usedCells);
+
             var playerCells = creator.createCellsFromPlayer(size, usedCells);
             if (compCells == playerCells)
             {

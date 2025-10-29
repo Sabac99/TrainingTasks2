@@ -11,15 +11,17 @@ class Program
         FieldCreator field = new FieldCreator(size);
         int attemptsLeft = size * 2;
         int score = 0;
+        var compCells = cellCreator.getCellFromComp(size, checker.usedCells);
         while (attemptsLeft > 0 || score < size)
         {
-            checker.CellsEquals(size, ref checker.usedCells, out bool equals, out (int, int) answer);
+            checker.CellsEquals(size, compCells, ref checker.usedCells, out bool equals, out (int, int) answer);
             if (equals == true)
             {
                 
                 field.array[answer.Item1, answer.Item2] = "x";
                 score++;
                 Console.WriteLine($"Ваш счет {score}, осталось попыток {attemptsLeft}");
+                compCells = cellCreator.getCellFromComp(size, checker.usedCells);
                 field.PrintField();
             }
             else
