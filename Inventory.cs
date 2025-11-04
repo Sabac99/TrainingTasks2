@@ -9,6 +9,10 @@ namespace TrainingTasks2
     internal class Inventory
     {
         private static int inventoryCapacity = 10;
+        private const string errorItemUndefined = "Предмет в инвентаре не найден";
+        private const string errorItemAlreadyExist = "Предмет уже существует в инвентаре";
+        private const string errorItemMaxLimitExceeded = "Превышено количество вещей";
+       
         Dictionary<string, int> inventory = new Dictionary<string, int>(inventoryCapacity);
 
         public Inventory()
@@ -32,7 +36,7 @@ namespace TrainingTasks2
             {
                 if(!inventory.TryAdd(name, weight))
                 {
-                    Console.WriteLine("Предмет уже существует в инвентаре");
+                    Console.WriteLine(errorItemAlreadyExist);
                 }
                 else
                 {
@@ -41,7 +45,7 @@ namespace TrainingTasks2
             }
             else
             {
-                Console.WriteLine("Превышено количество вещей");
+                Console.WriteLine(errorItemMaxLimitExceeded);
             }
                 
         }
@@ -54,7 +58,7 @@ namespace TrainingTasks2
             }
             else
             {
-                Console.WriteLine("Предмет в инвентаре не найден");
+                Console.WriteLine(errorItemUndefined);
             }
         }
     }

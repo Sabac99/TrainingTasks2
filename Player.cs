@@ -13,6 +13,8 @@ namespace TrainingTasks2
         private const string commandRemoveItemFromInventory = "удалить предмет";
         private const string commandAddItemToInventory = "добавить предмет";
         private const string commandExit = "выйти";
+        private const string errorInputMessage = "Ошибка ввода";
+        private const string errorCommandUndefined = "Команда не найдена";
         public Player()
         {
         
@@ -30,7 +32,7 @@ namespace TrainingTasks2
                 }
                 else
                 {
-                    Console.WriteLine("Ошибка ввода");
+                    Console.WriteLine(errorInputMessage);
                 }
             }
             return 0;
@@ -49,7 +51,7 @@ namespace TrainingTasks2
                 }
                 else
                 {
-                    Console.WriteLine("Ошибка ввода");
+                    Console.WriteLine(errorInputMessage);
                 }
             }
             return "0";
@@ -78,7 +80,7 @@ namespace TrainingTasks2
                     exit = true;
                     break;
                 default:
-                    Console.WriteLine("Комманда не найдена");
+                    Console.WriteLine(errorCommandUndefined);
                     break;
             }
         }

@@ -5,7 +5,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        Inventory inventory = new Inventory();
         Player player = new Player();
         bool exit = false;
         while (exit != true)
