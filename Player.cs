@@ -22,7 +22,7 @@ namespace TrainingTasks2
             Resource stone = new Resource(100, "Камень");
             Resource wood = new Resource(100, "Дерево");
             Resource iron = new Resource(100, "Железо");
-            Storage storage = new Storage(wood, stone, iron);
+            storage = new Storage(wood, stone, iron);
         }
         private int GetResourcesCount()
         {
