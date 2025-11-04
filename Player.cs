@@ -4,25 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace TrainingTasks2
 {
+
     internal class Player
     {
-        private Inventory inventory = new Inventory();
-        private const string commandOpenInventory = "открыть инвентарь";
-        private const string commandRemoveItemFromInventory = "удалить предмет";
-        private const string commandAddItemToInventory = "добавить предмет";
+        
+        private const string commandOpenStorage = "открыть склад";
+        private const string commandSpendResources = "потратить ресурсы";
+        private const string commandAddResources = "добавить ресурсы";
         private const string commandExit = "выйти";
+        private const string errorInputMessage = "Ошибка ввода";
+        Storage storage;
         public Player()
         {
-        
+            Resource stone = new Resource(100, "Камень");
+            Resource wood = new Resource(100, "Дерево");
+            Resource iron = new Resource(100, "Железо");
+            Storage storage = new Storage(wood, stone, iron);
         }
-        private int GetItemWeight()
+        private int GetResourcesCount()
         {
             bool isInputCorrect = false;
             while (!isInputCorrect)
             {
-                Console.WriteLine("Введите вес предмета");
+                Console.WriteLine("Введите количество ресурсов");
                 if (int.TryParse(Console.ReadLine(), out int weight))
                 {
                     isInputCorrect = true;
@@ -30,17 +37,17 @@ namespace TrainingTasks2
                 }
                 else
                 {
-                    Console.WriteLine("Ошибка ввода");
+                    Console.WriteLine(errorInputMessage);
                 }
             }
             return 0;
         }
-        private string GetItemName()
+        private string GetResourceType()
         {
             bool isInputCorrect = false;
             while (!isInputCorrect)
             {
-                Console.WriteLine("Введите название предмета");
+                Console.WriteLine("Введите название ресурса");
                 string itemNameInput = Console.ReadLine();
                 if (itemNameInput != null)
                 {
@@ -49,36 +56,36 @@ namespace TrainingTasks2
                 }
                 else
                 {
-                    Console.WriteLine("Ошибка ввода");
+                    Console.WriteLine(errorInputMessage);
                 }
             }
             return "0";
-            
+
         }
         public void CommandList()
         {
             Console.WriteLine("Список доступных команд");
-            Console.WriteLine($"{commandOpenInventory}, {commandRemoveItemFromInventory}, {commandAddItemToInventory}, {commandExit}");
+            Console.WriteLine($"{commandOpenStorage}, {commandAddResources}, {commandSpendResources}, {commandExit}");
         }
         public void CheckCommand(string command, ref bool exit)
         {
 
-            switch(command.ToLower())
+            switch (command.ToLower())
             {
-                case commandOpenInventory:
-                    inventory.ShowInvetory();
+                case commandOpenStorage:
+                    storage.ShowStorage();
                     break;
-                case commandAddItemToInventory:
-                    inventory.AddItemToInventory(GetItemName(),  GetItemWeight());
+                case commandAddResources:
+                    storage.AddResource(GetResourceType(), GetResourcesCount());
                     break;
-                case commandRemoveItemFromInventory:
-                    inventory.RemoveItemFromInventory(GetItemName());
+                case commandSpendResources:
+                    storage.SpendResource(GetResourceType(), GetResourcesCount());
                     break;
                 case commandExit:
                     exit = true;
                     break;
                 default:
-                    Console.WriteLine("Комманда не найдена");
+                    Console.WriteLine(errorInputMessage);
                     break;
             }
         }
