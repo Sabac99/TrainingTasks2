@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TrainingTasks2
+{
+    internal class Item
+    {
+        public KeyValuePair<string, int> inventoryItem
+        {
+            get
+            {
+                return inventoryItem;
+            }
+            private set { }
+        }
+        public Item(string name, int weight)
+        {
+            inventoryItem = new KeyValuePair<string, int>(name, weight);
+        }
+    }
+}
+
